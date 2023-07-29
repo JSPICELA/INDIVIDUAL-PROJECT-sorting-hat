@@ -60,8 +60,10 @@ const cardsOnDom = (array) => {
   renderToDom("#app" , domString);
 }
 
+// create sorting hat
+
+
 const startApp = () => {
   cardsOnDom(houses);
 }
-
 startApp();
