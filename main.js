@@ -33,6 +33,7 @@ const houses = [
 ]
 
 const app = document.querySelector("#app");
+const hat = document.querySelector("#hat");
 // Utility functions
 
 // renderToDom
@@ -61,9 +62,31 @@ const cardsOnDom = (array) => {
 }
 
 // create sorting hat
-
+const createHat = () => {
+  let domString = "";
+  domString += `
+  <div class="card" style="width: 18rem;">
+  <img src="./asset/sorting-hat.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">I am the Sorting Hat</h5>
+    <p class="card-text">I will noq sort you into your houses. The four house are... </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Gryffindor</li>
+    <li class="list-group-item">Slytherin</li>
+    <li class="list-group-item">Hufflepuff</li>
+    <li class="list-group-item"> Ravenclaw</li>
+  </ul>
+  <div class="card-body">
+    <button id="form-btn">Begin Sorting</button>
+  </div>
+</div>`
+  
+  renderToDom("#hat" , domString);
+}
 
 const startApp = () => {
-  cardsOnDom(houses);
+  createHat();
+  //cardsOnDom(houses);
 }
 startApp();
