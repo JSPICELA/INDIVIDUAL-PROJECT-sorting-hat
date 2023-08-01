@@ -232,58 +232,64 @@ const studentsOnDom = (array) => {
   renderToDom("#app", domString);
 };
 
-
 //CREATE FORM
 const createForm = () => {
   // target button to render
   const buttonToShow = document.querySelector("#form-btn");
 
   // listener on click to create form
-  buttonToShow.addEventListener("click" , function () {
+  buttonToShow.addEventListener("click", function () {
     app.innerHTML = `<form id="sort-student-form">
     <div class="mb-3">
       <label for="name" class="form-label">What is the student's name?</label>
       <input type="text" class="form-control"  placeholder="name" id="name" aria-describedby="name">
     </div>
     <div class="mb-3">
-      <label for="house" class="form-label">House</label>
-      <input type="text" class="form-control" id="house"  placeholder="house" aria-describedby="houseHelp">
-    </div>
-    <div class="mb-3">
       <input type="url" class="form-label" id="url"  placeholder="https://">
       <label class="form-label" for="exampleCheck1">Image URL</label>
     </div>
     <button type="submit" id="reset-btn">Sort</button>
-  </form>`
-  const form = document.querySelector("#sort-student-form");
-  form.reset();
- form.addEventListener("submit", create);
+  </form>`;
+    const form = document.querySelector("#sort-student-form");
+    form.reset();
+    form.addEventListener("submit", create);
   });
+};
 
+//logic
+ // pick random number between 1 and 4
+ // 
+ function randomNumber (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+ }
+
+function randomHouse () {
+  if (randomNumber(1,4) === 1) {
+    return "Slytherin"
+  } else if (randomNumber(1,4) === 2) {
+    return "Gryffindor"
+  } else if (randomNumber(1,4) === 3) {
+    return "Huffelpuff"
+  } else {
+    return "Ravenclaw"
+  }
 }
-
 
 const create = (e) => {
   e.preventDefault();
 
-  const buttonToShow = document.querySelector("#form-btn");
-  const studentForm = document.querySelector("#sort-student-form");
   // create new student object
   const newStudent = {
     id: students.length + 1,
     name: document.querySelector("#name").value,
     studentPhoto: document.querySelector("#url").value,
-    house: document.querySelector("#house").value
+    house: randomHouse()
   };
 
   students.push(newStudent);
   studentsOnDom(students);
-  studentForm.reset();
-  form.reset();
+ //studentForm.reset();
 };
-
-
-
 
 
 

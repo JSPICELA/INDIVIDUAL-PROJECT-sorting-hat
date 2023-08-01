@@ -1,0 +1,17 @@
+body {
+  background-color: paleturquoise;
+}
+
+#app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#hat {
+  text-align: center;
+}
+
+.card {
+  flex-basis: 30%;
+}
