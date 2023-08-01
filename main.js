@@ -240,7 +240,7 @@ const createForm = () => {
 
   // listener on click to create form
   buttonToShow.addEventListener("click" , function () {
-    showForm.innerHTML = `<form id="sort-student-form">
+    app.innerHTML = `<form id="sort-student-form">
     <div class="mb-3">
       <label for="name" class="form-label">What is the student's name?</label>
       <input type="text" class="form-control"  placeholder="name" id="name" aria-describedby="name">
@@ -255,15 +255,20 @@ const createForm = () => {
     </div>
     <button type="submit" id="reset-btn">Sort</button>
   </form>`
+  const form = document.querySelector("#sort-student-form");
+  form.reset();
+ form.addEventListener("submit", create);
   });
+
 }
 
 
 const create = (e) => {
   e.preventDefault();
+
   const buttonToShow = document.querySelector("#form-btn");
   const studentForm = document.querySelector("#sort-student-form");
-  // create new student object for students array of objects
+  // create new student object
   const newStudent = {
     id: students.length + 1,
     name: document.querySelector("#name").value,
@@ -274,13 +279,12 @@ const create = (e) => {
   students.push(newStudent);
   studentsOnDom(students);
   studentForm.reset();
-  
+  form.reset();
 };
 
 
 
- const form = document.querySelector("#show-form");
- form.addEventListener("submit", create);
+
 
 
 const startApp = () => {
