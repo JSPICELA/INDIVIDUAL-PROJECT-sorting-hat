@@ -240,13 +240,26 @@ const createForm = () => {
   domString += `
   <form id="sort-student-form">
     <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">What is the student's name?</label>
-    <input type="text" class="form-control" id="name" aria-describedby="name">
+      <label for="name" class="form-label">What is the student's name?</label>
+      <input type="text" class="form-control" id="name" aria-describedby="name">
+    </div>
+    <div class="mb-3">
+      <label for="house" class="form-label">House</label>
+      <input type="text" class="form-control" id="house" aria-describedby="houseHelp">
+    </div>
+    <div class="mb-3">
+      <input type="url" class="form-label" id="url">
+      <label class="form-label" for="exampleCheck1">Image URL</label>
     </div>
     <button type="submit" form="sort-student-form" value="Submit">Sort</button>
   </form>`;
-
+  
   const form = document.querySelector("#sort-student-form");
+  // addEventListener to sort button
+  const formBtn = document.querySelector("#form-btn");
+  formBtn.addEventListener("click", function () {
+    showForm.innerHTML = domString;
+  });
 
   //create a new student
   const create = (e) => {
@@ -256,26 +269,25 @@ const createForm = () => {
     const newStudent = {
       id: students.length + 1,
       name: document.querySelector("#name").value,
+      studentPhoto: document.querySelector("#url").value,
+      house: document.querySelector("#house").value
     };
 
     students.push(newStudent);
     studentsOnDom(students);
     form.reset();
-    form.addEventListener("submit", create);
   };
-
-  // addEventListener to sort button
-  const formBtn = document.querySelector("#form-btn");
-  formBtn.addEventListener("click", function () {
-    showForm.innerHTML = domString;
-  });
+  
+  form.addEventListener("submit", create);
+ 
 };
 
 const startApp = () => {
   introduction();
   createHat();
-  // housesOnDom(houses);
+   housesOnDom(houses);
   studentsOnDom(students);
   createForm();
 };
+
 startApp();
