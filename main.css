@@ -1,0 +1,36 @@
+#app {
+    text-align: center;
+}
+
+#name {
+    width:  11rem;
+    border: 1px solid crimson;
+}
+
+#sort-student-form {
+  
+}
+
+.container {
+  text-align: center;
+  border: 1px solid crimson;
+
+}
+
+.introduction {
+    text-align: center;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+   
+}
+
+#begin-sort-btn {
+  text-align: center;
+}
