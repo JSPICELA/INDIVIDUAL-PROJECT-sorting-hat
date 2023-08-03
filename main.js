@@ -215,6 +215,20 @@ const introduction = () => {
   renderToDom("#introduce", domString);
 };
 
+//make filter students buttons
+const filterStudentButtons = () => {
+  let domString = "";
+
+  domString += `<button type="button" class="btn btn-light" id ="all">All</button>
+  <button type="button" class="btn btn-danger" id="gryffindor">Gryffindor</button>
+  <button type="button" class="btn btn-warning" id="hufflepuff">Hufflepuff</button>
+  <button type="button" class="btn btn-primary" id="ravenclaw">Ravenclaw</button>
+  <button type="button" class="btn btn-success" id="slytherin">Slytherin</button>
+  <button type="button" class="btn btn-dark" id="death-eaters">Death Eaters</button>`
+
+  renderToDom("#filter-students-buttons" , domString);
+}
+
 //show students on dom
 const studentsOnDom = (array) => {
   let domString = "";
@@ -293,11 +307,126 @@ const create = (e) => {
 
 
 
+
+// filter student function
+const filterStudents = (house) => {
+  if (students.house === house) {
+
+  }
+}
+
 const startApp = () => {
   introduction();
   createHat();
+  filterStudentButtons();
   studentsOnDom(students);
   createForm();
 };
 
 startApp();
+
+// filter students
+const allBtn = document.querySelector("#all");
+allBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    renderToDom("#app" , domString);
+  }
+);
+
+const hufflepuffBtn = document.querySelector("#hufflepuff");
+hufflepuffBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    if (student.house === "Hufflepuff"){
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    app.innerHTML = domString;
+  }
+});
+const ravenclawBtn = document.querySelector("#ravenclaw");
+ravenclawBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    if (student.house === "Ravenclaw"){
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    app.innerHTML = domString;
+  }
+});
+const slytherinBtn = document.querySelector("#slytherin");
+slytherinBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    if (student.house === "Slytherin"){
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    app.innerHTML = domString;
+  }
+});
+const deathEaterBtn = document.querySelector("#death-eaters");
+deathEaterBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    if (student.house === "Death Eater"){
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    app.innerHTML = domString;
+  }
+});
+
+const gryffindorBtn = document.querySelector("#gryffindor");
+gryffindorBtn.addEventListener("click" , function () {
+  let domString = "";
+
+  for (const student of students) {
+    if (student.house === "Gryffindor"){
+      domString += `<div class="card" style="width: 18rem;">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <img src=${student.studentPhoto} class="card-img-top" >
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger">Expel</button>
+    </div>`;
+    }
+    app.innerHTML = domString;
+  }
+});

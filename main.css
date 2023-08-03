@@ -9,9 +9,14 @@ body {
 }
 
 #hat {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card {
   flex-basis: 30%;
+  align-items: center;
 }
+
+
