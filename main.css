@@ -4,7 +4,6 @@
 
 #name {
     width:  11rem;
-    border: 1px solid crimson;
 }
 
 #sort-student-form {
@@ -13,8 +12,6 @@
 
 .container {
   text-align: center;
-  border: 1px solid crimson;
-
 }
 
 .introduction {
