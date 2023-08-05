@@ -1,117 +1,6 @@
-//data , object
-const houses = [
+const expelled = [
   {
-    id: 1,
-    name: "Slytherin",
-    color: "Green",
-    image: "./asset/slytherin.jpg",
-  },
-
-  {
-    id: 2,
-    name: "Gryffindor",
-    color: "Red",
-    image: "./asset/gryffindor.jpg",
-  },
-
-  {
-    id: 3,
-    name: "Hufflepuff",
-    color: "Yellow",
-    image: "./asset/hufflepuff.jpg",
-  },
-
-  {
-    id: 4,
-    name: "Ravenclaw",
-    color: "Purple",
-    image: "./asset/ravenclaw.png",
-  },
-];
-
-const students = [
-  {
-    id: 1,
-    name: "Draco Malfoy",
-    house: "Slytherin",
-    studentPhoto: "./asset/malfoy.jpg",
-  },
-
-  {
-    id: 2,
-    name: "Severus Snape",
-    house: "Slytherin",
-    studentPhoto: "./asset/snape.jpg",
-  },
-
-  {
-    id: 3,
-    name: "Vincent Crabbe",
-    house: "Slytherin",
-    studentPhoto: "./asset/crabbe.jpg",
-  },
-
-  {
-    id: 4,
-    name: "Michael Corner",
-    house: "Ravenclaw",
-    studentPhoto: "./asset/corner.jpg",
-  },
-
-  {
-    id: 5,
-    name: "Luna Lovegood",
-    house: "Ravenclaw",
-    studentPhoto: "./asset/lovegood.jpg",
-  },
-
-  {
-    id: 6,
-    name: "Cho Chang",
-    house: "Ravenclaw",
-    studentPhoto: "./asset/chang.jpg",
-  },
-
-  {
-    id: 7,
-    name: "Harry Potter",
-    house: "Gryffindor",
-    studentPhoto: "./asset/potter.jpg",
-  },
-
-  {
-    id: 8,
-    name: "Hermione Granger",
-    house: "Gryffindor",
-    studentPhoto: "./asset/granger.jpg",
-  },
-
-  {
-    id: 9,
-    name: "Ron Weasley",
-    house: "Gryffindor",
-    studentPhoto: "./asset/ron.jpg",
-  },
-
-  {
-    id: 10,
-    name: "Cedric Diggory",
-    house: "Hufflepuff",
-    studentPhoto: "./asset/diggory.jpg",
-  },
-
-  {
-    id: 11,
-    name: "Hannah Abbott",
-    house: "Hufflepuff",
-    studentPhoto: "./asset/abbott.jpg",
-  },
-
-  {
-    id: 12,
-    name: "Zacharias Smith",
-    house: "Hufflepuff",
-    studentPhoto: "./asset/smith.jpg",
+  
   },
 ];
 
@@ -148,7 +37,6 @@ const introduction = () => {
 //begin sort button
 const createSortButton = () => {
   app.innerHTML += `<button class="btn btn-primary" id="begin-sort-btn">Begin Sort</button>`;
-  
 };
 
 //show students on dom
@@ -161,7 +49,7 @@ const studentsOnDom = (array) => {
     <div class="card-body">
       <h3 class="card-title">${iterator.name}</h3>
       <p>${iterator.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
     </div>
   </div>`;
   }
@@ -172,7 +60,9 @@ const studentsOnDom = (array) => {
 const createForm = () => {
   //xx
 
- app.insertAdjacentHTML('beforebegin' , `<div class="container">
+  app.insertAdjacentHTML(
+    "beforebegin",
+    `<div class="container">
   <form id="sort-student-form">
   
     <div class>
@@ -200,9 +90,10 @@ const createForm = () => {
         <hr>
       </div>
    </div>
-  </form>`);
+  </form>`
+  );
   const form = document.querySelector("#sort-student-form");
-  
+
   form.addEventListener("submit", createStudents);
 
   const gryffindorBtn = document.querySelector("#gryffindor");
@@ -216,7 +107,7 @@ const createForm = () => {
           <h5 class= "card-title">${student.name}</h5>
           <img src=${student.studentPhoto} class="card-img-top" >
           <p class="card-text">${student.house}</p>
-          <button type="button" class="btn btn-danger">Expel</button>
+          <button type="button" class="btn btn-danger" id="delete--">Expel</button>
         </div>`;
       }
       app.innerHTML = domString;
@@ -233,7 +124,7 @@ const createForm = () => {
       <h5 class= "card-title">${student.name}</h5>
       <img src=${student.studentPhoto} class="card-img-top" >
       <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
     </div>`;
     }
     renderToDom("#app", domString);
@@ -250,7 +141,7 @@ const createForm = () => {
       <h5 class= "card-title">${student.name}</h5>
       <img src=${student.studentPhoto} class="card-img-top" >
       <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
     </div>`;
       }
       app.innerHTML = domString;
@@ -267,7 +158,7 @@ const createForm = () => {
       <h5 class= "card-title">${student.name}</h5>
       <img src=${student.studentPhoto} class="card-img-top" >
       <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
     </div>`;
       }
       app.innerHTML = domString;
@@ -294,16 +185,15 @@ const createForm = () => {
   deathEaterBtn.addEventListener("click", function () {
     let domString = "";
 
-    for (const student of firstYears) {
-      if (firstYears.house === "Death Eater") {
-        domString += `<div class="card" style="width: 18rem;">
+    for (const student of expelled) {
+      domString += `<div class="card" style="width: 18rem;">
     <div class= "card-body">
       <h5 class= "card-title">${student.name}</h5>
       <img src=${student.studentPhoto} class="card-img-top" >
       <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
     </div>`;
-      }
+
       app.innerHTML = domString;
     }
   });
@@ -357,6 +247,18 @@ const createStudents = (e) => {
   studentsOnDom(firstYears);
   console.log("click");
 };
+
+//delete
+app.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+
+    const index = firstYears.findIndex((e) => e.id === Number(id));
+    firstYears.splice(index, 1);
+    
+    studentsOnDom(firstYears);
+  }
+});
 
 //add event listeners
 const addListeners = () => {
