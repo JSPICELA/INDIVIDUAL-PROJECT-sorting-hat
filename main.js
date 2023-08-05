@@ -1,8 +1,4 @@
-const expelled = [
-  {
-  
-  },
-];
+const expelled = [{}];
 
 const firstYears = [
   {
@@ -101,7 +97,7 @@ const createForm = () => {
     let domString = "";
 
     for (const student of firstYears) {
-      if (firstYears.house === "Gryffindor") {
+      if (student.house === "Gryffindor") {
         domString += `<div class="card" style="width: 18rem;">
         <div class= "card-body">
           <h5 class= "card-title">${student.name}</h5>
@@ -110,7 +106,7 @@ const createForm = () => {
           <button type="button" class="btn btn-danger" id="delete--">Expel</button>
         </div>`;
       }
-      app.innerHTML = domString;
+      renderToDom("#app", domString);
     }
   });
 
@@ -135,7 +131,7 @@ const createForm = () => {
     let domString = "";
 
     for (const student of firstYears) {
-      if (firstYears.house === "Hufflepuff") {
+      if (student.house === "Hufflepuff") {
         domString += `<div class="card" style="width: 18rem;">
     <div class= "card-body">
       <h5 class= "card-title">${student.name}</h5>
@@ -152,7 +148,7 @@ const createForm = () => {
     let domString = "";
 
     for (const student of firstYears) {
-      if (firstYears.house === "Ravenclaw") {
+      if (student.house === "Ravenclaw") {
         domString += `<div class="card" style="width: 18rem;">
     <div class= "card-body">
       <h5 class= "card-title">${student.name}</h5>
@@ -169,7 +165,7 @@ const createForm = () => {
     let domString = "";
 
     for (const student of firstYears) {
-      if (firstYears.house === "Slytherin") {
+      if (student.house === "Slytherin") {
         domString += `<div class="card" style="width: 18rem;">
     <div class= "card-body">
       <h5 class= "card-title">${student.name}</h5>
@@ -245,7 +241,6 @@ const createStudents = (e) => {
   firstYears.push(newStudent);
   form.reset();
   studentsOnDom(firstYears);
-  console.log("click");
 };
 
 //delete
@@ -255,7 +250,7 @@ app.addEventListener("click", (e) => {
 
     const index = firstYears.findIndex((e) => e.id === Number(id));
     firstYears.splice(index, 1);
-    
+
     studentsOnDom(firstYears);
   }
 });
