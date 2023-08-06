@@ -1,5 +1,4 @@
 const expelled = [];
-
 const firstYears = [];
 
 const app = document.querySelector("#app");
@@ -13,59 +12,40 @@ const renderToDom = (divId, htmlToRender) => {
   selectedElement.innerHTML = htmlToRender;
 };
 
-//introduction
-const introduction = () => {
-  let domString = "";
-
-  domString += `<h5 class="introduction">Welcome to Hogwarts</h5>
-  <hr>`;
-
-  renderToDom("#app", domString);
-};
-
-//begin sort button
-const createSortButton = () => {
-  app.innerHTML += `<button class="btn btn-primary" id="begin-sort-btn">Begin Sort</button>`;
-};
-
 //show students on dom
 const studentsOnDom = (array) => {
   let domString = "";
 
   for (const iterator of array) {
-    domString += `<div class="card"">
+    domString += `<div class="card" id=${iterator.id}>
     <div class="card-body">
       <h3 class="card-title">${iterator.name}</h3>
       <p>${iterator.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--${iterator.id}">Expel</button>
     </div>
   </div>`;
   }
-  renderToDom("#first-years" , domString)
+  renderToDom("#first-years", domString);
 };
 
 const expelledOnDom = (array) => {
   let domString = "";
 
   for (const iterator of array) {
-    domString += `<div class="card"">
+    domString += `<div class="card" id=${iterator.id} >
     <div class="card-body">
       <h3 class="card-title">${iterator.name}</h3>
       <p>${iterator.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+      <button type="button" class="btn btn-danger" id="delete--${iterator.id}">Expel</button>
     </div>
   </div>`;
   }
-  renderToDom("#the-expelled" , domString)
+  renderToDom("#the-expelled", domString);
 };
 
 //create form
 const createForm = () => {
-  //xx
-
-  app.insertAdjacentHTML(
-    "beforebegin",
-    `
+  app.innerHTML += `
   <form id="sort-student-form">
   
     <div class>
@@ -79,8 +59,7 @@ const createForm = () => {
       </div>
 
       <div>
-        <label>Student Photo:</label>
-        <input type="url" class="form-label" id="url"  placeholder="https://">
+        
         <br>
         <div class="filter-buttons">
         <button type="button" class="btn btn-light" id ="all">All</button>
@@ -93,113 +72,10 @@ const createForm = () => {
         <hr>
       </div>
    
-  </form>`
-  );
+  </form>`;
   const form = document.querySelector("#sort-student-form");
 
   form.addEventListener("submit", createStudents);
-
-  const gryffindorBtn = document.querySelector("#gryffindor");
-  gryffindorBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of firstYears) {
-      if (student.house === "Gryffindor") {
-        domString += `<div class="card" style="width: 18rem;">
-        <div class= "card-body">
-          <h5 class= "card-title">${student.name}</h5>
-          <img src=${student.studentPhoto} class="card-img-top" >
-          <p class="card-text">${student.house}</p>
-          <button type="button" class="btn btn-danger" id="delete--">Expel</button>
-        </div>`;
-      }
-      renderToDom("#app", domString);
-    }
-  });
-
-  const allBtn = document.querySelector("#all");
-  allBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of firstYears) {
-      domString += `<div class="card" style="width: 18rem;">
-    <div class= "card-body">
-      <h5 class= "card-title">${student.name}</h5>
-      <img src=${student.studentPhoto} class="card-img-top" >
-      <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
-    </div>`;
-    }
-    renderToDom("#app", domString);
-  });
-
-  const hufflepuffBtn = document.querySelector("#hufflepuff");
-  hufflepuffBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of firstYears) {
-      if (student.house === "Hufflepuff") {
-        domString += `<div class="card" style="width: 18rem;">
-    <div class= "card-body">
-      <h5 class= "card-title">${student.name}</h5>
-      <img src=${student.studentPhoto} class="card-img-top" >
-      <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
-    </div>`;
-      }
-      app.innerHTML = domString;
-    }
-  });
-  const ravenclawBtn = document.querySelector("#ravenclaw");
-  ravenclawBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of firstYears) {
-      if (student.house === "Ravenclaw") {
-        domString += `<div class="card" style="width: 18rem;">
-    <div class= "card-body">
-      <h5 class= "card-title">${student.name}</h5>
-      <img src=${student.studentPhoto} class="card-img-top" >
-      <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
-    </div>`;
-      }
-      app.innerHTML = domString;
-    }
-  });
-  const slytherinBtn = document.querySelector("#slytherin");
-  slytherinBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of firstYears) {
-      if (student.house === "Slytherin") {
-        domString += `<div class="card" style="width: 18rem;">
-    <div class= "card-body">
-      <h5 class= "card-title">${student.name}</h5>
-      <img src=${student.studentPhoto} class="card-img-top" >
-      <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger">Expel</button>
-    </div>`;
-      }
-      app.innerHTML = domString;
-    }
-  });
-  const deathEaterBtn = document.querySelector("#death-eaters");
-  deathEaterBtn.addEventListener("click", function () {
-    let domString = "";
-
-    for (const student of expelled) {
-      domString += `<div class="card" style="width: 18rem;">
-    <div class= "card-body">
-      <h5 class= "card-title">${student.name}</h5>
-      <img src=${student.studentPhoto} class="card-img-top" >
-      <p class="card-text">${student.house}</p>
-      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
-    </div>`;
-
-      app.innerHTML = domString;
-    }
-  });
 };
 
 //create filter buttons
@@ -241,7 +117,6 @@ const createStudents = (e) => {
   const newStudent = {
     id: firstYears.length + 1,
     name: document.querySelector("#name").value,
-    studentPhoto: document.querySelector("#url").value,
     house: randomHouse(),
   };
 
@@ -256,15 +131,13 @@ firstYearsDiv.addEventListener("click", (e) => {
     const [, id] = e.target.id.split("--");
 
     const index = firstYears.findIndex((e) => e.id === Number(id));
+    const copy = { ...firstYears[index] };
     firstYears.splice(index, 1);
-   
-    
-  
+    expelled.push(copy);
 
     studentsOnDom(firstYears);
     expelledOnDom(expelled);
     console.log(e);
-    
   }
 });
 
@@ -276,8 +149,6 @@ const addListeners = () => {
 
 // launch app
 const startApp = () => {
-  introduction();
-  createSortButton();
   addListeners();
 };
 
