@@ -1,16 +1,9 @@
-const expelled = [{}];
+const expelled = [];
 
-const firstYears = [
-  {
-    id: 1,
-    name: "Bruton Gaster",
-    studentPhoto:
-      "https://24.media.tumblr.com/c88840c12f2fb6d23aa9af29d73fedb8/tumblr_mz4betLTJg1sycm4xo1_250.gif",
-    house: "Gryffindor",
-  },
-];
+const firstYears = [];
 
 const app = document.querySelector("#app");
+const firstYearsDiv = document.querySelector("#first-years");
 
 // Utility functions
 
@@ -40,8 +33,7 @@ const studentsOnDom = (array) => {
   let domString = "";
 
   for (const iterator of array) {
-    domString += `<div class="card" style="width: 18rem;">
-    <img src="${iterator.studentPhoto}" class="card-img-top" alt="...">
+    domString += `<div class="card"">
     <div class="card-body">
       <h3 class="card-title">${iterator.name}</h3>
       <p>${iterator.house}</p>
@@ -49,7 +41,22 @@ const studentsOnDom = (array) => {
     </div>
   </div>`;
   }
-  app.innerHTML = domString;
+  renderToDom("#first-years" , domString)
+};
+
+const expelledOnDom = (array) => {
+  let domString = "";
+
+  for (const iterator of array) {
+    domString += `<div class="card"">
+    <div class="card-body">
+      <h3 class="card-title">${iterator.name}</h3>
+      <p>${iterator.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>
+  </div>`;
+  }
+  renderToDom("#the-expelled" , domString)
 };
 
 //create form
@@ -58,7 +65,7 @@ const createForm = () => {
 
   app.insertAdjacentHTML(
     "beforebegin",
-    `<div class="container">
+    `
   <form id="sort-student-form">
   
     <div class>
@@ -85,7 +92,7 @@ const createForm = () => {
         </div>
         <hr>
       </div>
-   </div>
+   
   </form>`
   );
   const form = document.querySelector("#sort-student-form");
@@ -244,14 +251,20 @@ const createStudents = (e) => {
 };
 
 //delete
-app.addEventListener("click", (e) => {
+firstYearsDiv.addEventListener("click", (e) => {
   if (e.target.id.includes("delete")) {
     const [, id] = e.target.id.split("--");
 
     const index = firstYears.findIndex((e) => e.id === Number(id));
     firstYears.splice(index, 1);
+   
+    
+  
 
     studentsOnDom(firstYears);
+    expelledOnDom(expelled);
+    console.log(e);
+    
   }
 });
 

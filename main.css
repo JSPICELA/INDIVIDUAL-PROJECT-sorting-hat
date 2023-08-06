@@ -6,12 +6,12 @@
     width:  11rem;
 }
 
-#sort-student-form {
-  
-}
 
 .container {
-    
+    border: 2px solid crimson;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   text-align: center;
   
 }
@@ -32,4 +32,36 @@ body {
 
 #begin-sort-btn {
   text-align: center;
+}
+
+#first-years {
+    border: 2px solid crimson;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+#the-expelled {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+   
+
+    width: 50%;
+    
+}
+
+#sort-student-form {
+    text-align: center;
+}
+
+
+.card {
+    width: 10rem;
+    height: 10rem;
+}
+
+#box {
+    border: 5px solid crimson;
 }
