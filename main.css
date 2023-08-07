@@ -1,67 +1,20 @@
-#app {
-    text-align: center;
-}
-
-#name {
-    width:  11rem;
-}
-
-
-.container {
-    
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  text-align: center;
-  
-}
-
-.introduction {
-    text-align: center;
-}
-
 body {
-    background-color: whitesmoke;
-}
-
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-   
-}
-
-#begin-sort-btn {
+  background-color: whitesmoke;
   text-align: center;
 }
 
 #first-years {
-    border: 1px solid crimson;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 50%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #the-expelled {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 1px solid crimson;
-    width: 50%;
-
-    
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
-#sort-student-form {
-    text-align: center;
-}
-
 
 .card {
-    width: 10rem;
-    height: 10rem;
-}
-
-#box {
-    border: 5px solid crimson;
+    margin: 5px;
 }

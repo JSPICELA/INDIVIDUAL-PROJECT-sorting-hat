@@ -3,6 +3,7 @@ const firstYears = [];
 
 const app = document.querySelector("#app");
 const firstYearsDiv = document.querySelector("#first-years");
+const expelledDiv = document.querySelector("#the-expelled")
 
 // Utility functions
 
@@ -17,7 +18,8 @@ const studentsOnDom = (array) => {
   let domString = "";
 
   for (const iterator of array) {
-    domString += `<div class="card" id=${iterator.id}>
+    domString += `
+    <div class="card" id=${iterator.id}>
     <div class="card-body">
       <h3 class="card-title">${iterator.name}</h3>
       <p>${iterator.house}</p>
@@ -73,6 +75,101 @@ const createForm = () => {
       </div>
    
   </form>`;
+  const gryffindorBtn = document.querySelector("#gryffindor");
+  gryffindorBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of firstYears) {
+      if (student.house === "Gryffindor") {
+        domString += `<div class="card">
+        <div class= "card-body">
+          <h5 class= "card-title">${student.name}</h5>
+          <p class="card-text">${student.house}</p>
+          <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+        </div>`;
+      }
+      renderToDom("#first-years", domString);
+    }
+  });
+
+  const allBtn = document.querySelector("#all");
+  allBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of firstYears) {
+      domString += `<div class="card">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>`;
+    }
+    renderToDom("first-years", domString);
+  });
+
+  const hufflepuffBtn = document.querySelector("#hufflepuff");
+  hufflepuffBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of firstYears) {
+      if (student.house === "Hufflepuff") {
+        domString += `<div class="card">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>`;
+      }
+      firstYearsDiv.innerHTML = domString;
+    }
+  });
+  const ravenclawBtn = document.querySelector("#ravenclaw");
+  ravenclawBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of firstYears) {
+      if (student.house === "Ravenclaw") {
+        domString += `<div class="card">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>`;
+      }
+      renderToDom("#first-years" , domString)
+    }
+  });
+  const slytherinBtn = document.querySelector("#slytherin");
+  slytherinBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of firstYears) {
+      if (student.house === "Slytherin") {
+        domString += `<div class="card">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>`;
+      }
+      firstYearsDiv.innerHTML = domString;
+    }
+  });
+  const deathEaterBtn = document.querySelector("#death-eaters");
+  deathEaterBtn.addEventListener("click", function () {
+    let domString = "";
+
+    for (const student of expelled) {
+      domString += `<div class="card">
+    <div class= "card-body">
+      <h5 class= "card-title">${student.name}</h5>
+      <p class="card-text">${student.house}</p>
+      <button type="button" class="btn btn-danger" id="delete--">Expel</button>
+    </div>`;
+
+      expelledDiv.innerHTML = domString;
+    }
+  });
   const form = document.querySelector("#sort-student-form");
 
   form.addEventListener("submit", createStudents);
@@ -132,12 +229,12 @@ firstYearsDiv.addEventListener("click", (e) => {
 
     const index = firstYears.findIndex((e) => e.id === Number(id));
     const copy = { ...firstYears[index] };
+    copy.house = "Death Eater"
     firstYears.splice(index, 1);
     expelled.push(copy);
 
     studentsOnDom(firstYears);
     expelledOnDom(expelled);
-    console.log(e);
   }
 });
 
@@ -145,6 +242,8 @@ firstYearsDiv.addEventListener("click", (e) => {
 const addListeners = () => {
   const sortBtn = document.querySelector("#begin-sort-btn");
   sortBtn.addEventListener("click", createForm);
+
+  
 };
 
 // launch app
